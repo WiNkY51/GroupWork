@@ -7,12 +7,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
+    
+    var user: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         // Do any additional setup after loading the view.
     }
+    
+    
 
 
 }
