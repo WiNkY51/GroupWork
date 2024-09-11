@@ -7,27 +7,31 @@
 
 import UIKit
 
-class UserViewController: UIViewController {
+final class UserViewController: UIViewController {
     
-    var user: User!
-
+    let user = UserModel.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if user == nil {
-            performSegue(withIdentifier: "regUser", sender: nil)
-        }
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showTheUser()
+        printMessage()
     }
-    */
-
+    
+    func printMessage(function: String = #function) {
+        print("\(title ?? ""): \(function)")
+    }
+    
+    private func showTheUser() {
+        guard user.registrationStatus else {
+            performSegue(withIdentifier: "regUser", sender: nil)
+            return
+        }
+        
+        navigationItem.title = user.fullName
+    }
 }

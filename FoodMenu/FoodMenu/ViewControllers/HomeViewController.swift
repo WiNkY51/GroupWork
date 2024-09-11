@@ -9,7 +9,6 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var user: User!
 
     override func viewDidLoad() {
         super.viewDidLoad()
